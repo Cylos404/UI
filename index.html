@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusMarket - Home</title>
+    <title>CampusMarket - UI Preview</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
     <style>
@@ -23,39 +23,380 @@
         .gradient-btn { 
             background: linear-gradient(135deg, #7c3aed, #2563eb); 
         }
+        .page { 
+            display: none; 
+        }
+        .page.active { 
+            display: block; 
+        }
     </style>
 </head>
 <body class="gradient-bg min-h-screen">
 
-    <!-- Header -->
-    <div class="glass sticky top-0 z-40 border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 gradient-btn rounded-xl flex items-center justify-center">
-                        <i data-feather="home" class="text-white w-5 h-5"></i>
+    <!-- Page 1: Home Page -->
+    <div id="home" class="page active">
+        <!-- Header -->
+        <div class="glass sticky top-0 z-40 border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 gradient-btn rounded-xl flex items-center justify-center">
+                            <i data-feather="home" class="text-white w-5 h-5"></i>
+                        </div>
+                        <h1 class="text-2xl font-bold gradient-text">CampusMarket</h1>
                     </div>
-                    <h1 class="text-2xl font-bold gradient-text">CampusMarket</h1>
+                    <button onclick="showPage('upload')" class="gradient-btn text-white px-4 py-2 rounded-xl flex items-center space-x-2 hover:shadow-lg transition-all">
+                        <i data-feather="plus" class="w-4 h-4"></i>
+                        <span>Sell Item</span>
+                    </button>
                 </div>
-                <button class="gradient-btn text-white px-4 py-2 rounded-xl flex items-center space-x-2 hover:shadow-lg transition-all">
-                    <i data-feather="plus" class="w-4 h-4"></i>
-                    <span>Sell Item</span>
-                </button>
+            </div>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="max-w-7xl mx-auto px-4 py-6">
+            <div class="glass rounded-2xl p-6 mb-6">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1 relative">
+                        <i data-feather="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                        <input type="text" placeholder="Search furniture, electronics, textbooks..." class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div class="flex gap-3">
+                        <select class="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option>All Categories</option>
+                            <option>Furniture</option>
+                            <option>Electronics</option>
+                            <option>Textbooks</option>
+                        </select>
+                        <button class="px-6 py-3 bg-gray-100 rounded-xl hover:bg-gray-200 transition">
+                            <i data-feather="filter" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Item Card 1 -->
+                <div class="glass rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400" alt="IKEA Study Desk" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button class="absolute top-3 right-3 p-2 glass rounded-full hover:bg-white transition">
+                            <i data-feather="heart" class="w-5 h-5 text-gray-400"></i>
+                        </button>
+                        <div class="absolute top-3 left-3 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">
+                            On Campus
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">IKEA Study Desk</h3>
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-2xl font-bold text-purple-600">$85</span>
+                                <span class="text-sm text-gray-500 line-through">$150</span>
+                            </div>
+                            <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Good</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600 mb-3">
+                            <i data-feather="map-pin" class="w-4 h-4 mr-1"></i>
+                            <span>East Village • 0.2 miles</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-1">
+                                <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-current"></i>
+                                <span class="text-sm">4.8 • Maria Chen</span>
+                            </div>
+                            <button onclick="showPage('detail')" class="gradient-btn text-white px-4 py-2 rounded-lg text-sm hover:shadow-lg transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item Card 2 -->
+                <div class="glass rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400" alt="MacBook Air" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button class="absolute top-3 right-3 p-2 glass rounded-full hover:bg-white transition">
+                            <i data-feather="heart" class="w-5 h-5 text-red-500 fill-current"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">MacBook Air M1</h3>
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-2xl font-bold text-purple-600">$650</span>
+                                <span class="text-sm text-gray-500 line-through">$999</span>
+                            </div>
+                            <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Excellent</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600 mb-3">
+                            <i data-feather="map-pin" class="w-4 h-4 mr-1"></i>
+                            <span>University Area • 1.1 miles</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-1">
+                                <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-current"></i>
+                                <span class="text-sm">4.9 • Ahmed Hassan</span>
+                            </div>
+                            <button onclick="showPage('detail')" class="gradient-btn text-white px-4 py-2 rounded-lg text-sm hover:shadow-lg transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item Card 3 -->
+                <div class="glass rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400" alt="Office Chair" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button class="absolute top-3 right-3 p-2 glass rounded-full hover:bg-white transition">
+                            <i data-feather="heart" class="w-5 h-5 text-gray-400"></i>
+                        </button>
+                        <div class="absolute top-3 left-3 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">
+                            On Campus
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Comfortable Office Chair</h3>
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-2xl font-bold text-purple-600">$120</span>
+                                <span class="text-sm text-gray-500 line-through">$250</span>
+                            </div>
+                            <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Very Good</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600 mb-3">
+                            <i data-feather="map-pin" class="w-4 h-4 mr-1"></i>
+                            <span>West Hall • 0.5 miles</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-1">
+                                <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-current"></i>
+                                <span class="text-sm">4.7 • Sophie Kumar</span>
+                            </div>
+                            <button onclick="showPage('detail')" class="gradient-btn text-white px-4 py-2 rounded-lg text-sm hover:shadow-lg transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Search and Filters -->
-    <div class="max-w-7xl mx-auto px-4 py-6">
-        <div class="glass rounded-2xl p-6 mb-6">
-            <div class="flex flex-col md:flex-row gap-4">
-                <div class="flex-1 relative">
-                    <i data-feather="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
-                    <input type="text" placeholder="Search furniture, electronics, textbooks..." class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+    <!-- Page 2: Item Detail -->
+    <div id="detail" class="page">
+        <div class="max-w-6xl mx-auto px-4 py-6">
+            <button onclick="showPage('home')" class="mb-6 text-purple-600 hover:text-purple-800 flex items-center space-x-2">
+                <span>← Back to listings</span>
+            </button>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Image Section -->
+                <div class="glass rounded-2xl p-6">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600" alt="IKEA Study Desk" class="w-full h-96 object-cover rounded-xl mb-4">
+                    <div class="flex space-x-2">
+                        <button class="flex-1 gradient-btn text-white py-3 rounded-xl hover:shadow-lg transition-all">
+                            <i data-feather="camera" class="w-5 h-5 mx-auto"></i>
+                        </button>
+                        <button class="flex-1 bg-gray-100 py-3 rounded-xl hover:bg-gray-200 transition">
+                            View All Photos
+                        </button>
+                    </div>
                 </div>
-                <div class="flex gap-3">
-                    <select class="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                        <option>All Categories</option>
+
+                <!-- Details Section -->
+                <div class="space-y-6">
+                    <div class="glass rounded-2xl p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h1 class="text-3xl font-bold mb-2">IKEA Study Desk</h1>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-3xl font-bold text-purple-600">$85</span>
+                                    <span class="text-lg text-gray-500 line-through">$150</span>
+                                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">43% off</span>
+                                </div>
+                            </div>
+                            <button class="p-3 glass rounded-full hover:bg-white transition">
+                                <i data-feather="heart" class="w-6 h-6 text-gray-400"></i>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-xl">
+                                <span class="text-sm text-gray-600">Condition</span>
+                                <p class="font-semibold">Good</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-xl">
+                                <span class="text-sm text-gray-600">Location</span>
+                                <p class="font-semibold">On Campus - East Village</p>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-700 mb-6">Barely used IKEA desk, perfect for studying. Moving back home, must sell quickly! Great condition with minor wear on corners.</p>
+
+                        <div class="flex space-x-3 mb-6">
+                            <button onclick="showPage('payment')" class="flex-1 gradient-btn text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
+                                Buy Now
+                            </button>
+                            <button onclick="showPage('chat')" class="flex-1 border-2 border-purple-500 text-purple-600 py-3 rounded-xl font-semibold hover:bg-purple-50 transition flex items-center justify-center space-x-2">
+                                <i data-feather="message-circle" class="w-5 h-5"></i>
+                                <span>Message Seller</span>
+                            </button>
+                        </div>
+
+                        <div class="border-t pt-6">
+                            <h3 class="font-semibold mb-3">Delivery Options</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-3 bg-green-50 p-3 rounded-xl">
+                                    <i data-feather="calendar" class="w-5 h-5 text-green-600"></i>
+                                    <span>Campus Pickup Available</span>
+                                </div>
+                                <div class="flex items-center space-x-3 bg-blue-50 p-3 rounded-xl">
+                                    <i data-feather="truck" class="w-5 h-5 text-blue-600"></i>
+                                    <span>Local Delivery (+$10)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seller Info -->
+                    <div class="glass rounded-2xl p-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 gradient-btn rounded-full flex items-center justify-center">
+                                <i data-feather="user" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">Maria Chen</h3>
+                                <div class="flex items-center space-x-1">
+                                    <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-current"></i>
+                                    <span class="text-sm">4.8 (42 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: Size Guide -->
+    <div id="size-guide" class="page">
+        <div class="max-w-4xl mx-auto px-4 py-6">
+            <button onclick="showPage('home')" class="mb-6 text-purple-600 hover:text-purple-800 flex items-center space-x-2">
+                <span>← Back</span>
+            </button>
+
+            <div class="glass rounded-2xl p-8">
+                <div class="flex items-center space-x-3 mb-8">
+                    <i data-feather="ruler" class="w-8 h-8 text-purple-600"></i>
+                    <h1 class="text-3xl font-bold">Size Guide</h1>
+                </div>
+
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Furniture Dimensions</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-blue-50 p-4 rounded-xl">
+                                <h3 class="font-semibold mb-2">Desks</h3>
+                                <ul class="text-sm space-y-1">
+                                    <li>Small: 36-42" W × 20-24" D</li>
+                                    <li>Medium: 48-54" W × 24-28" D</li>
+                                    <li>Large: 60"+ W × 28"+ D</li>
+                                </ul>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-xl">
+                                <h3 class="font-semibold mb-2">Chairs</h3>
+                                <ul class="text-sm space-y-1">
+                                    <li>Seat Height: 16-20"</li>
+                                    <li>Seat Width: 18-22"</li>
+                                    <li>Back Height: 24-32"</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Room Size Recommendations</h2>
+                        <div class="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-xl">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                                <div>
+                                    <h4 class="font-semibold">Dorm Room (10×12)</h4>
+                                    <p>Compact furniture only</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Studio (400-600 sq ft)</h4>
+                                    <p>Multi-functional pieces</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">1BR Apt (600+ sq ft)</h4>
+                                    <p>Standard-sized furniture</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Measurement Tips</h2>
+                        <div class="bg-yellow-50 p-6 rounded-xl">
+                            <ul class="space-y-2 text-sm">
+                                <li>• Always measure doorways and stairways before buying large items</li>
+                                <li>• Leave at least 3 feet of walking space around furniture</li>
+                                <li>• Consider ceiling height for tall items like bookcases</li>
+                                <li>• Check if items can be disassembled for easier transport</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 4: Upload Item -->
+    <div id="upload" class="page">
+        <div class="max-w-lg mx-auto px-4 py-6">
+            <button onclick="showPage('home')" class="mb-6 text-purple-600 hover:text-purple-800 flex items-center space-x-2">
+                <span>← Back</span>
+            </button>
+
+            <div class="glass rounded-2xl p-6">
+                <h2 class="text-xl font-bold mb-6">Sell Your Item</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Photos</label>
+                        <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center">
+                            <i data-feather="camera" class="w-12 h-12 text-gray-400 mx-auto mb-3"></i>
+                            <p class="text-gray-600 mb-2">Upload up to 8 photos</p>
+                            <button class="gradient-btn text-white px-4 py-2 rounded-lg hover:shadow-lg transition">
+                                Choose Photos
+                            </button>
+                            <div class="mt-3 p-3 bg-blue-50 rounded-lg">
+                                <div class="flex items-center space-x-2 text-sm text-blue-700">
+                                    <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                                    <span>AI will automatically remove cluttered backgrounds</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <input type="text" placeholder="e.g., IKEA Study Desk" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="number" placeholder="Price ($)" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <select class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option>Condition</option>
+                            <option>New</option>
+                            <option>Excellent</option>
+                            <option>Very Good</option>
+                            <option>Good</option>
+                            <option>Fair</option>
+                        </select>
+                    </div>
+                    
+                    <select class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option>Select Category</option>
                         <option>Furniture</option>
                         <option>Electronics</option>
                         <option>Textbooks</option>
@@ -63,241 +404,135 @@
                         <option>Decor</option>
                         <option>Clothing</option>
                     </select>
-                    <button class="px-6 py-3 bg-gray-100 rounded-xl hover:bg-gray-200 transition">
-                        <i data-feather="filter" class="w-5 h-5"></i>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Location</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="location" class="text-purple-500">
+                                <span>On Campus</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="location" class="text-purple-500">
+                                <span>University Area</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <textarea placeholder="Describe your item, its condition, and why you're selling..." rows="3" class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                    
+                    <button class="w-full gradient-btn text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
+                        List Item
                     </button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Items Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            <!-- Item Card 1 - IKEA Desk -->
-            <div class="glass rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400" alt="IKEA Study Desk" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                    <button class="absolute top-3 right-3 p-2 glass rounded-full hover:bg-white transition">
-                        <i data-feather="heart" class="w-5 h-5 text-gray-400"></i>
-                    </button>
-                    <div class="absolute top-3 left-3 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">
-                        On Campus
+    <!-- Page 5: Chat -->
+    <div id="chat" class="page">
+        <div class="max-w-md mx-auto px-4 py-6">
+            <button onclick="showPage('detail')" class="mb-6 text-purple-600 hover:text-purple-800 flex items-center space-x-2">
+                <span>← Back</span>
+            </button>
+
+            <div class="glass rounded-2xl h-96 flex flex-col">
+                <div class="p-4 border-b flex items-center space-x-3">
+                    <div class="w-8 h-8 gradient-btn rounded-full flex items-center justify-center">
+                        <i data-feather="user" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <span class="font-semibold">Maria Chen</span>
+                </div>
+                <div class="flex-1 p-4 overflow-y-auto">
+                    <div class="space-y-3">
+                        <div class="bg-gray-100 p-3 rounded-xl max-w-xs">
+                            <p class="text-sm">Hi! Is this item still available?</p>
+                        </div>
+                        <div class="gradient-btn text-white p-3 rounded-xl max-w-xs ml-auto">
+                            <p class="text-sm">Yes, it's still available! When would you like to see it?</p>
+                        </div>
+                        <div class="bg-gray-100 p-3 rounded-xl max-w-xs">
+                            <p class="text-sm">How about tomorrow afternoon?</p>
+                        </div>
                     </div>
                 </div>
-                <div class="p-4">
-                    <h3 class="font-semibold text-lg mb-2">IKEA Study Desk</h3>
-                    <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-2xl font-bold text-purple-600">$85</span>
-                            <span class="text-sm text-gray-500 line-through">$150</span>
-                        </div>
-                        <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Good</span>
+                <div class="p-4 border-t">
+                    <div class="flex space-x-2">
+                        <input type="text" placeholder="Type a message..." class="flex-1 px-3 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <button class="gradient-btn text-white px-4 py-2 rounded-xl">Send</button>
                     </div>
-                    <div class="flex items-center text-sm text-gray-600 mb-3">
-                        <i data-feather="map-pin" class="w-4 h-4 mr-1"></i>
-                        <span>East Village • 0.2 miles</span>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-1">
-                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-current"></i>
-                            <span class="text-sm">4.8 • Maria Chen</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 6: Payment -->
+    <div id="payment" class="page">
+        <div class="max-w-md mx-auto px-4 py-6">
+            <button onclick="showPage('detail')" class="mb-6 text-purple-600 hover:text-purple-800 flex items-center space-x-2">
+                <span>← Back</span>
+            </button>
+
+            <div class="glass rounded-2xl p-6">
+                <h2 class="text-xl font-bold mb-6">Payment</h2>
+                
+                <div class="space-y-4">
+                    <div class="bg-gray-50 p-4 rounded-xl">
+                        <div class="flex justify-between items-center">
+                            <span>IKEA Study Desk</span>
+                            <span class="font-semibold">$85</span>
                         </div>
-                        <button class="gradient-btn text-white px-4 py-2 rounded-lg text-sm hover:shadow-lg transition-all">
-                            View Details
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Delivery Option</label>
+                        <select class="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option>Campus Pickup (Free)</option>
+                            <option>Local Delivery (+$10)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Payment Method</label>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-3 p-3 border border-gray-200 rounded-xl">
+                                <i data-feather="credit-card" class="w-5 h-5"></i>
+                                <span>Credit/Debit Card</span>
+                                <input type="radio" name="payment" class="ml-auto">
+                            </div>
+                            <div class="flex items-center space-x-3 p-3 border border-gray-200 rounded-xl">
+                                <span class="text-blue-600 font-semibold">PayPal</span>
+                                <input type="radio" name="payment" class="ml-auto">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t pt-4">
+                        <div class="flex justify-between text-lg font-semibold mb-4">
+                            <span>Total</span>
+                            <span>$85</span>
+                        </div>
+                        <button class="w-full gradient-btn text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
+                            Complete Purchase
                         </button>
                     </div>
                 </div>
             </div>
-
-            <!-- Item Card 2 - MacBook -->
-            <div class="glass rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400" alt="MacBook Air" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                    <button class="absolute top-3 right-3 p-2 glass rounded-full hover:bg-white transition">
-                        <i data-feather="heart" class="w-5 h-5 text-red-500 fill-current"></i>
-                    </button>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-semibold text-lg mb-2">MacBook Air M1</h3>
-                    <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-2xl font-bold text-purple-600">$650</span>
-                            <span class="text-sm text-gray-500 line-through">$999</span>
-                        </div>
-                        <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Excellent</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-600 mb-3">
-                        <i data-feather="map-pin" class="w-4 h-4 mr-1"></i>
-                        <span>University Area • 1.1 miles</span>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-1">
-                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-current"></i>
-                            <span class="text-sm">4.9 • Ahmed Hassan</span>
-                        </div>
-                        <button class="gradient-btn text-white px-4 py-2 rounded-lg text-sm hover:shadow-lg transition-all">
-                            View Details
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item Card 3 - Office Chair -->
-            <div class="glass rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400" alt="Office Chair" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                    <button class="absolute top-3 right-3 p-2 glass rounded-full hover:bg-white transition">
-                        <i data-feather="heart" class="w-5 h-5 text-gray-400"></i>
-                    </button>
-                    <div class="absolute top-3 left-3 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">
-                        On Campus
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-semibold text-lg mb-2">Comfortable Office Chair</h3>
-                    <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-2xl font-bold text-purple-600">$120</span>
-                            <span class="text-sm text-gray-500 line-through">$250</span>
-                        </div>
-                        <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Very Good</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-600 mb-3">
-                        <i data-feather="map-pin" class="w-4 h-4 mr-1"></i>
-                        <span>West Hall • 0.5 miles</span>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-1">
-                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-current"></i>
-                            <span class="text-sm">4.7 • Sophie Kumar</span>
-                        </div>
-                        <button class="gradient-btn text-white px-4 py-2 rounded-lg text-sm hover:shadow-lg transition-all">
-                            View Details
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item Card 4 - Textbooks -->
-            <div class="glass rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400" alt="Textbooks" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                    <button class="absolute top-3 right-3 p-2 glass rounded-full hover:bg-white transition">
-                        <i data-feather="heart" class="w-5 h-5 text-gray-400"></i>
-                    </button>
-                    <div class="absolute top-3 left-3 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-medium">
-                        Bundle Deal
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-semibold text-lg mb-2">CS Textbook Bundle</h3>
-                    <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-2xl font-bold text-purple-600">$95</span>
-                            <span class="text-sm text-gray-500 line-through">$180</span>
-                        </div>
-                        <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Like New</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-600 mb-3">
-                        <i data-feather="map-pin" class="w-4 h-4 mr-1"></i>
-                        <span>On Campus - Library • 0.3 miles</span>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-1">
-                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-current"></i>
-                            <span class="text-sm">4.9 • David Park</span>
-                        </div>
-                        <button class="gradient-btn text-white px-4 py-2 rounded-lg text-sm hover:shadow-lg transition-all">
-                            View Details
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item Card 5 - Mini Fridge -->
-            <div class="glass rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=400" alt="Mini Fridge" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                    <button class="absolute top-3 right-3 p-2 glass rounded-full hover:bg-white transition">
-                        <i data-feather="heart" class="w-5 h-5 text-gray-400"></i>
-                    </button>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-semibold text-lg mb-2">Mini Fridge</h3>
-                    <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-2xl font-bold text-purple-600">$75</span>
-                            <span class="text-sm text-gray-500 line-through">$120</span>
-                        </div>
-                        <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Good</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-600 mb-3">
-                        <i data-feather="map-pin" class="w-4 h-4 mr-1"></i>
-                        <span>University Area • 0.8 miles</span>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-1">
-                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-current"></i>
-                            <span class="text-sm">4.6 • Lisa Wang</span>
-                        </div>
-                        <button class="gradient-btn text-white px-4 py-2 rounded-lg text-sm hover:shadow-lg transition-all">
-                            View Details
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item Card 6 - Lamp -->
-            <div class="glass rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group">
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Desk Lamp" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                    <button class="absolute top-3 right-3 p-2 glass rounded-full hover:bg-white transition">
-                        <i data-feather="heart" class="w-5 h-5 text-gray-400"></i>
-                    </button>
-                    <div class="absolute top-3 left-3 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">
-                        On Campus
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-semibold text-lg mb-2">Modern Desk Lamp</h3>
-                    <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-2xl font-bold text-purple-600">$25</span>
-                            <span class="text-sm text-gray-500 line-through">$45</span>
-                        </div>
-                        <span class="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded-full">Excellent</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-600 mb-3">
-                        <i data-feather="map-pin" class="w-4 h-4 mr-1"></i>
-                        <span>North Campus • 0.4 miles</span>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-1">
-                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-current"></i>
-                            <span class="text-sm">4.8 • Alex Johnson</span>
-                        </div>
-                        <button class="gradient-btn text-white px-4 py-2 rounded-lg text-sm hover:shadow-lg transition-all">
-                            View Details
-                        </button>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 
     <!-- Bottom Navigation -->
     <div class="fixed bottom-0 left-0 right-0 glass border-t border-gray-200 px-4 py-2">
         <div class="flex justify-around items-center max-w-md mx-auto">
-            <button class="flex flex-col items-center space-y-1 p-2 text-purple-600">
+            <button onclick="showPage('home')" class="flex flex-col items-center space-y-1 p-2 text-purple-600">
                 <i data-feather="home" class="w-6 h-6"></i>
                 <span class="text-xs">Home</span>
             </button>
-            <button class="flex flex-col items-center space-y-1 p-2 text-gray-400">
+            <button onclick="showPage('size-guide')" class="flex flex-col items-center space-y-1 p-2 text-gray-400">
                 <i data-feather="ruler" class="w-6 h-6"></i>
                 <span class="text-xs">Size Guide</span>
             </button>
-            <button class="flex flex-col items-center space-y-1 p-2 text-purple-600">
+            <button onclick="showPage('upload')" class="flex flex-col items-center space-y-1 p-2 text-purple-600">
                 <div class="w-12 h-12 gradient-btn rounded-full flex items-center justify-center">
                     <i data-feather="plus" class="w-6 h-6 text-white"></i>
                 </div>
@@ -313,9 +548,64 @@
         </div>
     </div>
 
+    <!-- Page Navigation Buttons (for demo purposes) -->
+    <div class="fixed top-4 right-4 z-50 space-y-2">
+        <div class="glass rounded-lg p-2 text-xs">
+            <div class="text-center font-semibold mb-2">Demo Navigation</div>
+            <button onclick="showPage('home')" class="block w-full text-left px-2 py-1 hover:bg-gray-100 rounded">Home</button>
+            <button onclick="showPage('detail')" class="block w-full text-left px-2 py-1 hover:bg-gray-100 rounded">Item Detail</button>
+            <button onclick="showPage('size-guide')" class="block w-full text-left px-2 py-1 hover:bg-gray-100 rounded">Size Guide</button>
+            <button onclick="showPage('upload')" class="block w-full text-left px-2 py-1 hover:bg-gray-100 rounded">Upload</button>
+            <button onclick="showPage('chat')" class="block w-full text-left px-2 py-1 hover:bg-gray-100 rounded">Chat</button>
+            <button onclick="showPage('payment')" class="block w-full text-left px-2 py-1 hover:bg-gray-100 rounded">Payment</button>
+        </div>
+    </div>
+
     <script>
         // Initialize Feather icons
         feather.replace();
+
+        // Page navigation function
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update navigation active states
+            updateNavigation(pageId);
+            
+            // Re-initialize icons for the new page
+            feather.replace();
+        }
+
+        function updateNavigation(activePageId) {
+            // Update bottom navigation active states
+            const navButtons = document.querySelectorAll('.fixed.bottom-0 button');
+            navButtons.forEach(button => {
+                button.classList.remove('text-purple-600');
+                button.classList.add('text-gray-400');
+            });
+            
+            // Set active navigation item based on page
+            if (activePageId === 'home') {
+                navButtons[0].classList.add('text-purple-600');
+                navButtons[0].classList.remove('text-gray-400');
+            } else if (activePageId === 'size-guide') {
+                navButtons[1].classList.add('text-purple-600');
+                navButtons[1].classList.remove('text-gray-400');
+            } else if (activePageId === 'upload') {
+                navButtons[2].classList.add('text-purple-600');
+                navButtons[2].classList.remove('text-gray-400');
+            }
+        }
+
+        // Initialize page on load
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
+        });
     </script>
 
 </body>
